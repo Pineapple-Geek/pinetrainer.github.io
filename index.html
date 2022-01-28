@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html manifest="trainer.cache">
+    <head>
+        <meta charset="UTF-8">
+        <title>PS4 Offline Trainer (TylerMods) Update 07-17-2021</title>
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <link rel="stylesheet" href="font-awesome.min.css">
+        <link rel="stylesheet" href="main.css">
+        <script>
+            window.applicationCache.ondownloading = function()
+                    {
+                        
+                        document.getElementById("progress").innerHTML="<h3>Caching started...</h3>";
+                    };
+                    
+                    window.applicationCache.onprogress = function(a)
+                    {
+                        document.getElementById("progress").style.textAlign='center';
+                        document.getElementById("progress").style.color='orange';
+                        document.getElementById("progress").innerHTML="<h3>Caching Status: "+(Math.round(100*(a.loaded/a.total)))+"% Completed</h3>";
+                    };
+                    
+                    window.applicationCache.oncached = window.applicationCache.onupdateready = function()
+                    {
+                        
+                        document.getElementById("progress").style.color='green';
+                        document.getElementById("progress").innerHTML="<h3>Page Cached, Please Close Broser and Turn Off Internet!</h3>";
+                    };
+            </script>
+              <script src="jquery.min.js"></script>
+              <script src="bootstrap.js"></script>
+              <script src="lazyload.min.js"></script>
+              <script src="BigInteger.min.js"></script>
+              <script src="loadingoverlay.min.js"></script>
+              <script src="main.js"></script>
+
+              
+		
+            </head>
+        <body class="bg-darker"><br>
+        <div id="progress" style="color:white; align-content: center;"></div>
+        <button onclick="topFunction()" id="myBtn" class="top" title="Go to top">Top</button>
+        <script>
+            //Get the button
+            var mybutton = document.getElementById("myBtn");
+            
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function() {scrollFunction()};
+            
+            function scrollFunction() {
+              if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+              } else {
+                mybutton.style.display = "none";
+              }
+            }
+            
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+              document.body.scrollTop = 0;
+              document.documentElement.scrollTop = 0;
+            }
+            </script>
+        <div class="jumbotron transparent" style="margin: auto;height: 50%; width: 50%; border-radius: 10px; border: 5px black solid; border-color: yellow; background-position: center;background-repeat: no-repeat; background-size: 100%;backdrop-filter: blur(10px);">
+            <div class="d-flex justify-content-center">
+                <input id="ip" class="form-control" type="text" placeholder="localhost or 127.0.0.1" style="max-width :320px">
+            </div>
+            <p></p>
+            <div class="d-flex justify-content-center">
+                <input class="form-control" id="search-input" type="text" placeholder="Search Game..." style="max-width :280px">
+                <button id="search-button" class="btn btn-primary" style="color: white;" ><img src="search-icon.png" width="16px" height="16px"/></button>
+
+            </div>
+            <p></p>
+        </div>
+		        
+        <br><br>
+        <div id="container" class="center-block d-flex flex-wrap justify-content-center" style="padding-bottom: 5%; padding-top: 5%;background-size: 100%;background-repeat: no-repeat;margin: auto;height: 90%; width: 90%; border-radius: 10px; border: 5px black solid; border-color: yellow; background-position: center;backdrop-filter: blur(10px);">
+
+        </div>
+        <div id="trainer-dialog" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="d-flex flex-wrap rounded m-1 bg-darker"  style="min-height: 128px;">
+                            <div class="bg-black">
+                                <img id="cover" class="coverholder m-1 rounded lazy" onerror="if (this.src !== 'error.png') this.src = 'error.png';" style="width :118px">
+                            </div>
+                            <div class="GInfo bg-black">
+                                <h5><small id="game"></small></h5>
+                                <h5><small id="cusa"></small></h5>
+                                <h5><small id="version"></small></h5>
+                                <h5><small id="credits" class="font-weight-light"></small></h5>
+                            </div>
+                        </div>
+                        <div id="mods">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <h6 class="mr-auto">Status : <small id="Message" class=" font-weight-light"></small></h6>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
